@@ -27,11 +27,15 @@ body {
 
 body {
   font-family: "Montserrat";
+  color: #fff;
   font-size: 2.4rem;
   -webkit-transition: background 0.2s ease, color 0.2s ease;
   -moz-transition: background 0.2s ease, color 0.2s ease;
   transition: background 0.2s ease, color 0.2s ease;
+  background-image: url("/Event_Booster/assets/bg-mobile.png");
+  background-color: rgb(5, 5, 5);
 }
+
 /***
     The new CSS reset - version 1.11 (last updated 20.9.2023)
     GitHub page: https://github.com/elad2412/the-new-css-reset
@@ -165,6 +169,123 @@ meter {
           box-sizing: border-box;
 }
 
-h1 {
-  color: red;
+.search-controls {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto;
+}
+
+.search-controls input,
+.search-controls select,
+.search-controls button {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-controls input {
+  width: 260px;
+}
+
+.search-controls select {
+  width: 180px;
+}
+
+.search-controls button {
+  background: #DC56C5;
+  color: white;
+  cursor: pointer;
+}
+
+.events-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  padding: 1rem 2rem;
+}
+
+.event-card {
+  background: #1b1b1b;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: center;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  -moz-transition: transform 0.2s, -moz-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s, -moz-transform 0.2s;
+}
+
+.event-card:hover {
+  -webkit-transform: scale(1.03);
+     -moz-transform: scale(1.03);
+      -ms-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+.event-card img {
+  width: 100%;
+  height: 240px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.event-card h3 {
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  color: #DC56C5;
+  margin: 0.8rem 0 0.4rem;
+}
+
+.event-card p {
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+}
+
+.pagination {
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  margin: 20px;
+}
+
+.pagination button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  margin: 0 0.3rem;
+  cursor: pointer;
+  -webkit-transition: color 0.2s;
+  -moz-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+.pagination button.active {
+  color: #b43fe0;
+}
+
+@media (min-width: 1024){
+  body {
+    background-image: url("/Event_Booster/assets/bg-laptop.png");
+  }
+}
+
+@media (min-width: 768){
+  body {
+    background-image: url("/Event_Booster/assets/bg-tablet.png");
+  }
 }
