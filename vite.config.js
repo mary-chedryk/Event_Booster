@@ -5,9 +5,12 @@ import { defineConfig } from "vite";
 import glob from "fast-glob";
 import { fileURLToPath } from "url";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+import injectHTML from 'vite-plugin-html-inject';
+
 
 export default defineConfig({
   plugins: [
+    injectHTML(),
     ViteImageOptimizer({
       png: {
         quality: 86,
