@@ -15,15 +15,15 @@ body {
   font-family: "Montserrat";
   font-size: 2.4rem;
   transition: background 0.2s ease, color 0.2s ease;
-  background-image: url("../img/bg-mobile.png");
-  background-color: rgb(5, 5, 5); 
+  //background-image: url("../img/bg-mobile.png");
+  //background-color: rgb(5, 5, 5); 
 
 @media (min-width: 768) {
-  background-image: url("../img/bg-tablet.png");
+  //background-image: url("../img/bg-tablet.png");
 }
 
 
 @media (min-width: 1024) {
-  background-image: url("../img/bg-laptop.png");
+  //background-image: url("../img/bg-laptop.png");
 }
 }
