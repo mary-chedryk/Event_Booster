@@ -1,6 +1,8 @@
-@use "fonts";
-@use "reset";
-@use "vars";
-@use "global";
-@use "main";
-@use "badges";
+@use "./base/fonts";
+@use "./base/global";
+@use "./base/mixins";
+@use "./base/reset";
+@use "./components/modal";
+@use "./layout/footer";
+@use "./layout/header";
+@use "./layout/main";
