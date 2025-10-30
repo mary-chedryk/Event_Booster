@@ -8,11 +8,64 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
   
   <title>Event Booster</title>
-  <script type="module" crossorigin src="/Event_Booster/assets/index-a15a58e3.js"></script>
+  <script type="module" crossorigin src="/Event_Booster/assets/index-65d434a3.js"></script>
   <link rel="stylesheet" href="/Event_Booster/assets/index.css">
 </head>
 <body>
-       
+     <div id="eventModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <div class="modal-header">
+      <img id="modalThumb" src="" alt="Event thumb" />
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-left">
+        <img id="modalImg" src="" alt="Event image" />
+      </div>
+
+      <div class="modal-right">
+        <div class="modal-info">
+          <p class="section-title">INFO</p>
+          <p id="modalInfo"></p>
+
+          <p class="section-title">WHEN</p>
+          <p id="modalDate"></p>
+
+          <p class="section-title">WHERE</p>
+          <p id="modalPlace"></p>
+
+          <p class="section-title">WHO</p>
+          <p id="modalTitle"></p>
+
+          <p class="section-title">PRICES</p>
+          <p><i class="fa fa-barcode"></i> Standart 300–500 UAH</p>
+          <a
+            id="modalLink"
+            class="buy-btn"
+
+            target="_blank"
+            >BUY TICKETS</a
+          >
+
+          <p><i class="fa fa-barcode"></i> VIP 1000–1500 UAH</p>
+          <a
+            id="modalLink2"
+            class="buy-btn"
+            target="_blank"
+            >BUY TICKETS</a
+          >
+
+          <button class="author-btn">
+            MORE FROM THIS AUTHOR
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
        
        <section id="event-section">
   <div class="search-controls">

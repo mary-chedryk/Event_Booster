@@ -40,6 +40,45 @@
   }
 })();
 const style = "";
+const modal = document.getElementById("eventModal");
+const closeBtn = document.querySelector(".close");
+const modalImg = document.getElementById("modalImg");
+const modalThumb = document.getElementById("modalThumb");
+const modalTitle = document.getElementById("modalTitle");
+const modalDate = document.getElementById("modalDate");
+const modalPlace = document.getElementById("modalPlace");
+const modalInfo = document.getElementById("modalInfo");
+const modalLink = document.getElementById("modalLink");
+const modalLink2 = document.getElementById("modalLink2");
+const authorBtn = document.querySelector(".author-btn");
+document.addEventListener("click", (e) => {
+  var _a, _b, _c, _d, _e, _f;
+  const card = e.target.closest(".event-card");
+  if (!card)
+    return;
+  const img = (_a = card.querySelector("img")) == null ? void 0 : _a.src;
+  const title = (_b = card.querySelector("h3")) == null ? void 0 : _b.textContent;
+  const date = (_c = card.querySelector("p")) == null ? void 0 : _c.textContent;
+  const place = ((_e = (_d = card.querySelectorAll("p")[1]) == null ? void 0 : _d.textContent) == null ? void 0 : _e.replace("📍", "")) || "";
+  const link = (_f = card.querySelector("a")) == null ? void 0 : _f.href;
+  modalImg.src = img;
+  modalThumb.src = img;
+  modalTitle.textContent = title;
+  modalDate.textContent = date;
+  modalPlace.textContent = place;
+  modalInfo.textContent = "This event is one of the most exciting performances of the season. Get your tickets now!";
+  modalLink.href = link;
+  modalLink2.href = link;
+  modal.style.display = "flex";
+});
+closeBtn.addEventListener("click", () => modal.style.display = "none");
+window.addEventListener("click", (e) => {
+  if (e.target === modal)
+    modal.style.display = "none";
+});
+authorBtn.addEventListener("click", () => {
+  window.open("https://www.nba.com/suns/", "_blank");
+});
 const apiKey = "2iGZoDHxlEzaibNheCZlL2JhbufbdSxs";
 const grid = document.getElementById("events-grid");
 const pagination = document.getElementById("pagination");
