@@ -397,6 +397,16 @@ meter {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
 }
 
 .logo-svg {
@@ -410,6 +420,31 @@ meter {
   font-family: "Montserrat";
   font-weight: bold;
   text-align: center;
+}
+
+.search-controls {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+}
+
+.header-input {
+  background-color: rgb(147, 147, 147);
+}
+
+.select-country {
+  background-color: rgb(147, 147, 147);
+}
+
+.header-btn {
+  background-color: rgb(147, 147, 147);
 }
 .search-controls {
   display: -webkit-box;
@@ -537,6 +572,18 @@ meter {
     background-image: url(/Event_Booster/assets/header-bg-tablet.png);
     height: 57vh;
   }
+  .search-controls {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+       -moz-box-orient: horizontal;
+       -moz-box-direction: normal;
+            flex-direction: row;
+  }
   .header-title {
     font-size: 30px;
   }
@@ -549,6 +596,7 @@ meter {
 @media screen and (min-width: 1200px){
   .header {
     background-image: url(/Event_Booster/assets/header-bg-desktop.png);
+    height: 40vh;
   }
   .header-title {
     font-size: 50px;
