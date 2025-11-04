@@ -384,6 +384,11 @@ meter {
             transform: scale(1);
   }
 }
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
 .footer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -620,5 +625,26 @@ meter {
   .logo-svg {
     width: 250px;
     height: 250px;
+  }
+}
+
+@media (max-width: 480px){
+  .modal-left {
+    display: none;
+  }
+  .modal-body {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+       -moz-box-orient: vertical;
+       -moz-box-direction: normal;
+            flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+            align-items: center;
+  }
+  .modal-right {
+    width: 100%;
   }
 }
