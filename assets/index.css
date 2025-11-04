@@ -389,7 +389,7 @@ meter {
   background-position: top;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   -webkit-background-size: contain;
           background-size: contain;
   margin: 0;
@@ -411,7 +411,6 @@ meter {
   font-weight: bold;
   text-align: center;
 }
-
 .search-controls {
   display: -webkit-box;
   display: -webkit-flex;
@@ -530,5 +529,32 @@ meter {
 @media (min-width: 768){
   body {
     background-image: url("/Event_Booster/assets/bg-tablet.png");
+  }
+}
+
+@media screen and (min-width: 768px){
+  .header {
+    background-image: url(/Event_Booster/assets/header-bg-tablet.png);
+    height: 57vh;
+  }
+  .header-title {
+    font-size: 30px;
+  }
+  .logo-svg {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .header {
+    background-image: url(/Event_Booster/assets/header-bg-desktop.png);
+  }
+  .header-title {
+    font-size: 50px;
+  }
+  .logo-svg {
+    width: 250px;
+    height: 250px;
   }
 }
