@@ -384,6 +384,22 @@ meter {
             transform: scale(1);
   }
 }
+.footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  color: rgb(147, 147, 147);
+}
+
+.text {
+  font-size: 16px;
+}
+
 .header {
   background-image: url(/Event_Booster/assets/header-background.png);
   background-position: top;
