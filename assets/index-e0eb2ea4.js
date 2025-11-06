@@ -104,58 +104,76 @@ const pagination = document.getElementById("pagination");
 const keywordInput = document.getElementById("keyword");
 const countrySelect = document.getElementById("country");
 const searchBtn = document.getElementById("search-btn");
-async function fetchEvents(page = 0) {
-  var _a;
+let currentPage = 0;
+let totalPages = 1;
+let currentKeyword = "";
+let currentCountry = "";
+async function fetchEvents(page = 0, append = false) {
+  var _a, _b, _c;
   const keyword = keywordInput.value.trim();
   const country = countrySelect.value;
+  if (page === 0) {
+    currentKeyword = keyword;
+    currentCountry = country;
+  }
   const url = new URL("https://app.ticketmaster.com/discovery/v2/events.json");
   url.searchParams.set("apikey", apiKey);
-  if (keyword)
-    url.searchParams.set("keyword", keyword);
-  if (country)
-    url.searchParams.set("countryCode", country);
+  if (currentKeyword)
+    url.searchParams.set("keyword", currentKeyword);
+  if (currentCountry)
+    url.searchParams.set("countryCode", currentCountry);
   url.searchParams.set("size", 12);
   url.searchParams.set("page", page);
-  grid.innerHTML = "<p>Loading...</p>";
+  if (!append)
+    grid.innerHTML = "<p>Loading...</p>";
+  else
+    pagination.innerHTML = "<p>Loading more...</p>";
   try {
     const res = await fetch(url);
     const data = await res.json();
     const events = ((_a = data._embedded) == null ? void 0 : _a.events) || [];
-    renderEvents(events);
-    const pageInfo = data.page || {};
-    renderPagination(pageInfo.totalPages || 1, pageInfo.number || 0);
+    totalPages = ((_b = data.page) == null ? void 0 : _b.totalPages) || 1;
+    currentPage = ((_c = data.page) == null ? void 0 : _c.number) || 0;
+    renderEvents(events, append);
+    renderLoadMore();
   } catch (error) {
     console.error(error);
     grid.innerHTML = `<p style="color:red">Error loading events. Check console for details.</p>`;
   }
 }
-function renderEvents(events) {
-  if (!events.length) {
+function renderEvents(events, append = false) {
+  if (!events.length && !append) {
     grid.innerHTML = "<p>No events found.</p>";
     return;
   }
-  grid.innerHTML = events.map(
+  const eventCards = events.map(
     (e) => {
       var _a, _b, _c, _d, _e, _f, _g;
       return `
-    <div class="event-card">
-      <img src="${(_b = (_a = e.images) == null ? void 0 : _a[0]) == null ? void 0 : _b.url}" alt="${e.name}">
-      <h3>${e.name}</h3>
-      <p>${((_d = (_c = e.dates) == null ? void 0 : _c.start) == null ? void 0 : _d.localDate) || "No date"}</p>
-      <p>📍 ${((_g = (_f = (_e = e._embedded) == null ? void 0 : _e.venues) == null ? void 0 : _f[0]) == null ? void 0 : _g.name) || ""}</p>
-      <a href="${e.url}" target="_blank">More info</a>
-    </div>
-  `;
+      <div class="event-card">
+        <img src="${(_b = (_a = e.images) == null ? void 0 : _a[0]) == null ? void 0 : _b.url}" alt="${e.name}">
+        <h3>${e.name}</h3>
+        <p>${((_d = (_c = e.dates) == null ? void 0 : _c.start) == null ? void 0 : _d.localDate) || "No date"}</p>
+        <p>📍 ${((_g = (_f = (_e = e._embedded) == null ? void 0 : _e.venues) == null ? void 0 : _f[0]) == null ? void 0 : _g.name) || ""}</p>
+        <a href="${e.url}" target="_blank">More info</a>
+      </div>
+    `;
     }
   ).join("");
+  if (append)
+    grid.innerHTML += eventCards;
+  else
+    grid.innerHTML = eventCards;
 }
-function renderPagination(totalPages, current) {
-  let buttons = "";
-  const maxPages = Math.min(totalPages, 6);
-  for (let i = 0; i < maxPages; i++) {
-    buttons += `<button class="${i === current ? "active" : ""}" onclick="fetchEvents(${i})">${i + 1}</button>`;
+function renderLoadMore() {
+  if (currentPage + 1 < totalPages) {
+    pagination.innerHTML = `
+      <button id="load-more-btn">Load More</button>
+    `;
+    document.getElementById("load-more-btn").onclick = () => fetchEvents(currentPage + 1, true);
+  } else {
+    pagination.innerHTML = `<p>All events loaded ✅</p>`;
   }
-  pagination.innerHTML = buttons;
 }
 searchBtn.addEventListener("click", () => fetchEvents(0));
 fetchEvents();
