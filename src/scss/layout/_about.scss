@@ -1,11 +1,139 @@
-:root {
-    --about-bg: #0e0e10;
-    --about-card-bg: #18181b;
-    --about-accent: #ff3ca6;
-    --about-muted: #9aa0a6;
-    --about-radius: 14px;
-    --slide-gap: 20px;
-}
+@use "../base/color" as c;
+
+// .about-us {
+//     color: #fff;
+//     padding: 40px 20px;
+//     text-align: center;
+//     overflow: hidden;
+// }
+
+// .about-us__container {
+//     position: relative;
+// }
+
+// .about-us__title {
+//     font-size: 1.6rem;
+//     margin-bottom: 8px;
+// }
+
+// .about-us__subtitle {
+//     color: c.$about-muted;
+//     margin-bottom: 32px;
+//     font-size: 0.95rem;
+// }
+
+// /* Слайдер */
+// .about-us__slider-wrapper {
+//     position: relative;
+//     overflow: hidden;
+//     display: flex;
+//     align-items: center;
+// }
+
+// .about-us__slider {
+//     display: flex;
+//     padding: 30px 30px;
+//     gap: c.$slide-gap;
+//     transition: transform 0.4s ease;
+//     will-change: transform;
+// }
+
+
+// .about-us__slide {
+//     position: relative;
+
+//     flex: 0 0 100%;
+//     width: 206px;
+//     padding: 20px;
+//     box-sizing: border-box;
+//     transition: transform 0.3s ease, box-shadow 0.3s ease;
+//     border-top-left-radius: 50px;
+//     border-bottom-right-radius: 50px;
+// }
+
+// .about-us__slide::after {
+//     content: "";
+//     width: 78%;
+//     height: 46%;
+//     display: block;
+//     position: absolute;
+//     right: 0;
+//     top: 0;
+//     z-index: 99;
+//     border: 1px solid #DC56C54D;
+//     border-top-left-radius: 50px;
+//     border-bottom-right-radius: 50px;
+// }
+
+// .about-us__slide:hover {
+//     transform: translateY(-4px);
+//     box-shadow: 0 0 16px rgba(255, 60, 166, 0.4);
+// }
+
+
+
+// .about-us__name {
+//     margin: 0;
+//     font-size: 1.1rem;
+// }
+
+// .about-us__role {
+//     color: c.$about-muted;
+//     font-size: 0.9rem;
+// }
+
+// .about-us__arrow {
+//     position: absolute;
+//     top: 50%;
+//     left: 0;
+//     transform: translateY(-50%);
+//     border: none;
+//     color: #fff;
+//     font-size: 150px;
+//     width: 48px;
+//     height: 48px;
+//     border-radius: 50%;
+//     cursor: pointer;
+//     opacity: 0.85;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     z-index: 10;
+//     transition: transform 0.2s ease, opacity 0.2s ease;
+// }
+
+// .about-us__arrow:hover {
+//     opacity: 1;
+//     transform: translateY(-50%) scale(1.1);
+// }
+
+// .about-us__arrow--left {
+//     left: 16px;
+// }
+
+// .about-us__arrow--right {
+//     right: 16px;
+//     left: auto;
+// }
+
+// /* --- Адаптив --- */
+
+// /* Планшет (від 768px): показуємо 2 картки */
+// @media (min-width: 768px) {
+//     .about-us__slide {
+//         flex: 0 0 calc(50% - c.$slide-gap / 2);
+//         max-width: calc(50% - c.$slide-gap / 2);
+//     }
+// }
+
+// @media (min-width: 1200px) {
+//     .about-us__slide {
+//         flex: 0 0 calc(33.333% - c.$slide-gap / 1.5);
+//         max-width: calc(33.333% - c.$slide-gap / 1.5);
+//     }
+// }
+
+
 
 .about-us {
     color: #fff;
@@ -26,7 +154,7 @@
 }
 
 .about-us__subtitle {
-    color: var(--about-muted);
+    color: c.$about-muted;
     margin-bottom: 32px;
     font-size: 0.95rem;
 }
@@ -39,21 +167,44 @@
 
 .about-us__slider {
     display: flex;
-    gap: var(--slide-gap);
+    gap: c.$slide-gap;
     transition: transform 0.4s ease;
-    will-change: transform;
-    padding:15px 20px;
-    
+    padding: 15px 15px;
 }
 
 .about-us__slide {
-    background: var(--about-card-bg);
-    border-radius: var(--about-radius);
+    position: relative;
     flex: 0 0 100%;
-    max-width: 100%;
+    width: 206px;
     padding: 20px;
     box-sizing: border-box;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+// .about-us__slide {
+//     background: c.$about-card-bg;
+//     border-radius: c.$about-radius;
+//     flex: 0 0 100%;
+//     padding: 20px;
+//     box-sizing: border-box;
+//     transition: transform 0.3s ease, box-shadow 0.3s ease;
+//     scroll-snap-align: start;
+// }
+
+.about-us__slide::after {
+    content: "";
+    width: 78%;
+    height: 46%;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    border: 1px solid #DC56C54D;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 
 .about-us__slide:hover {
@@ -62,9 +213,11 @@
 }
 
 .about-us__image {
-    width: 100%;
-    border-radius: var(--about-radius);
+    width: 500px;
+    height: 300px;
     margin-bottom: 12px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 
 .about-us__name {
@@ -73,23 +226,25 @@
 }
 
 .about-us__role {
-    color: var(--about-muted);
+    color: c.$about-muted;
     font-size: 0.9rem;
 }
 
 /* Стрілки */
 .about-us__arrow {
+    display: flex;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--about-accent);
     border: none;
     color: #fff;
-    font-size: 2rem;
+    font-size: 150px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
     opacity: 0.7;
     transition: opacity 0.2s;
     z-index: 2;
@@ -107,20 +262,25 @@
     right: 10px;
 }
 
-/* --- Адаптив --- */
+/* 🔹 Адаптив: мобайл → планшет → ПК */
 
-/* Планшет (від 768px): показуємо 2 картки */
-@media (min-width: 768px) {
+/* Телефон до 480px */
+@media (max-width: 480px) {
     .about-us__slide {
-        flex: 0 0 calc(50% - var(--slide-gap) / 2);
-        max-width: calc(50% - var(--slide-gap) / 2);
+        flex: 0 0 100%;
     }
 }
 
-/* ПК (від 1200px): показуємо 3 картки */
+/* Планшет від 768px */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .about-us__slide {
+        flex: 0 0 calc(50% - c.$slide-gap / 2);
+    }
+}
+
+/* ПК від 1200px */
 @media (min-width: 1200px) {
     .about-us__slide {
-        flex: 0 0 calc(33.333% - var(--slide-gap) / 1.5);
-        max-width: calc(33.333% - var(--slide-gap) / 1.5);
+        flex: 0 0 calc(33.333% - c.$slide-gap / 1.5);
     }
 }
