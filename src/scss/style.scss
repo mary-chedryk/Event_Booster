@@ -2,6 +2,8 @@
 @use "./base/global";
 @use "./base/mixins";
 @use "./base/reset";
+@use "./base/container";
+@use "./base/color";
 @use "./components/modal";
 @use "./layout/footer";
 @use "./layout/header";
