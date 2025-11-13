@@ -489,6 +489,46 @@ body.no-scroll {
   font-size: 1rem;
 }
 
+#keyword {
+  width: 260px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: none;
+  color: #fff;
+  padding: 0.8rem 2.5rem 0.8rem 1.2rem;
+  font-size: 1rem;
+  outline: none;
+  background-color: #1b1b1b;
+  color: #dc56c5;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23ffffffaa' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.24 5.59 12.65 3 9.5 3S3.76 5.59 3.76 8.76 6.35 14.52 9.5 14.52c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l4.25 4.25a1 1 0 001.41-1.41L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  -webkit-background-size: 1rem 1rem;
+          background-size: 1rem;
+}
+
+#keyword::-webkit-input-placeholder {
+  font-weight: 500;
+}
+
+#keyword::-moz-placeholder {
+  font-weight: 500;
+}
+
+#keyword:-ms-input-placeholder {
+  font-weight: 500;
+}
+
+#keyword::-ms-input-placeholder {
+  font-weight: 500;
+}
+
+#keyword::placeholder {
+  font-weight: 500;
+}
+
 .search-controls input {
   width: 260px;
 }
@@ -498,7 +538,7 @@ body.no-scroll {
 }
 
 .search-controls button {
-  background: #DC56C5;
+  background: #dc56c5;
   color: white;
   cursor: pointer;
 }
@@ -511,7 +551,7 @@ body.no-scroll {
 }
 
 .event-card {
-  background: #1b1b1b;
+  height: 100%;
   border-radius: 16px;
   overflow: hidden;
   text-align: center;
@@ -522,6 +562,16 @@ body.no-scroll {
   -moz-transition: transform 0.2s, -moz-transform 0.2s;
   transition: transform 0.2s;
   transition: transform 0.2s, -webkit-transform 0.2s, -moz-transform 0.2s;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
 }
 
 .event-card:hover {
@@ -536,20 +586,41 @@ body.no-scroll {
   height: 240px;
   -o-object-fit: cover;
      object-fit: cover;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
 .event-card h3 {
   font-weight: 700;
-  font-size: 16px;
+  line-height: 100%;
   text-align: center;
-  color: #DC56C5;
-  margin: 0.8rem 0 0.4rem;
+  color: #dc56c5;
+  font-size: 1rem;
+  margin-bottom: 1px;
+  min-height: 40px;
+  margin-top: 4.5px;
 }
 
-.event-card p {
+.p-date {
+  text-align: center;
+  font-family: Montserrat;
   font-weight: 400;
   font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
   text-align: center;
+  color: #FFFFFF;
+  margin-bottom: 5px;
+}
+
+.p-adress {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 .pagination {
@@ -573,6 +644,47 @@ body.no-scroll {
 
 .pagination button.active {
   color: #b43fe0;
+}
+
+.load-more-btn {
+  display: inline-block;
+  width: 100%;
+  font-size: 16px;
+  padding: 10px 0;
+  border-radius: 8px;
+  background-color: #ff2bc1;
+  color: white;
+  text-align: center;
+  -webkit-transition: background 0, 2;
+  -moz-transition: background 0, 2;
+  transition: background 0, 2;
+  margin-top: auto;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #1b1b1b;
+  color: #dc56c5;
+  border: 1px solid #dc56c5;
+  border-radius: 12px;
+  padding: 0.6rem 2rem 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23dc56c5' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  -webkit-background-size: 1rem 1rem;
+          background-size: 1rem;
+  border-radius: 40px;
+}
+
+select:focus {
+  border-color: #ff2bc1;
+  -webkit-box-shadow: 0 0 0 2px rgba(255, 43, 193, 0.3333333333);
+          box-shadow: 0 0 0 2px rgba(255, 43, 193, 0.3333333333);
 }
 
 :root {
