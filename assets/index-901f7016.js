@@ -146,20 +146,34 @@ function renderEvents(events, append = false) {
     grid.innerHTML = "<p>No events found.</p>";
     return;
   }
-  grid.innerHTML = events.map(
+  const eventCards = events.map(
     (e) => {
       var _a, _b, _c, _d, _e, _f, _g;
       return `
-    <div class="event-card">
-      <img src="${(_b = (_a = e.images) == null ? void 0 : _a[0]) == null ? void 0 : _b.url}" alt="${e.name}">
-      <h3>${e.name}</h3>
-      <p class="p-date">${((_d = (_c = e.dates) == null ? void 0 : _c.start) == null ? void 0 : _d.localDate) || "No date"}</p>
-      <p class="p-adress">📍 ${((_g = (_f = (_e = e._embedded) == null ? void 0 : _e.venues) == null ? void 0 : _f[0]) == null ? void 0 : _g.name) || ""}</p>
-      <a class="load-more-btn" href="${e.url}" target="_blank">More info</a>
-    </div>
-  `;
+      <div class="event-card">
+        <img src="${(_b = (_a = e.images) == null ? void 0 : _a[0]) == null ? void 0 : _b.url}" alt="${e.name}">
+        <h3>${e.name}</h3>
+        <p class="p-date">${((_d = (_c = e.dates) == null ? void 0 : _c.start) == null ? void 0 : _d.localDate) || "No date"}</p>
+        <p class="p-adress">📍 ${((_g = (_f = (_e = e._embedded) == null ? void 0 : _e.venues) == null ? void 0 : _f[0]) == null ? void 0 : _g.name) || ""}</p>
+        <a class="load-more-btn" href="${e.url}" target="_blank">More info</a>
+      </div>
+    `;
     }
   ).join("");
+  if (append)
+    grid.innerHTML += eventCards;
+  else
+    grid.innerHTML = eventCards;
+}
+function renderLoadMore() {
+  if (currentPage + 1 < totalPages) {
+    pagination.innerHTML = `
+      <button id="load-more-btn">Load More</button>
+    `;
+    document.getElementById("load-more-btn").onclick = () => fetchEvents(currentPage + 1, true);
+  } else {
+    pagination.innerHTML = `<p>All events loaded ✅</p>`;
+  }
 }
 searchBtn.addEventListener("click", () => fetchEvents(0));
 fetchEvents();
