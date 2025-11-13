@@ -52,31 +52,30 @@ function renderEvents(events, append = false) {
     return;
   }
 
-  const eventCards = events.map(
-    (e) => `
-      <div class="event-card">
-        <img src="${e.images?.[0]?.url}" alt="${e.name}">
-        <h3>${e.name}</h3>
-        <p>${e.dates?.start?.localDate || 'No date'}</p>
-        <p>📍 ${e._embedded?.venues?.[0]?.name || ''}</p>
-        <a href="${e.url}" target="_blank">More info</a>
-      </div>
-    `
-  ).join('');
-
-  if (append) grid.innerHTML += eventCards;
-  else grid.innerHTML = eventCards;
+  grid.innerHTML = events
+    .map(
+      (e) => `
+    <div class="event-card">
+      <img src="${e.images?.[0]?.url}" alt="${e.name}">
+      <h3>${e.name}</h3>
+      <p class="p-date">${e.dates?.start?.localDate || 'No date'}</p>
+      <p class="p-adress">📍 ${e._embedded?.venues?.[0]?.name || ''}</p>
+      <a class="load-more-btn" href="${e.url}" target="_blank">More info</a>
+    </div>
+  `
+    )
+    .join('');
 }
 
-function renderLoadMore() {
-  if (currentPage + 1 < totalPages) {
-    pagination.innerHTML = `
-      <button id="load-more-btn">Load More</button>
-    `;
-    document.getElementById('load-more-btn').onclick = () => fetchEvents(currentPage + 1, true);
-  } else {
-    pagination.innerHTML = `<p>All events loaded ✅</p>`;
+function renderPagination(totalPages, current) {
+  let buttons = '';
+  const maxPages = Math.min(totalPages, 6);
+
+  for (let i = 0; i < maxPages; i++) {
+    buttons += `<button class="${i === current ? 'active' : ''}" onclick="fetchEvents(${i})">${i + 1}</button>`;
   }
+
+  pagination.innerHTML = buttons;
 }
 
 searchBtn.addEventListener('click', () => fetchEvents(0));
