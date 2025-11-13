@@ -169,6 +169,12 @@ meter {
           box-sizing: border-box;
 }
 
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
 .modal {
   display: none;
   -webkit-box-pack: center;
@@ -407,11 +413,10 @@ body.no-scroll {
 
 .header {
   background-image: url(/Event_Booster/assets/header-background.png);
-  background-position: top;
+  background-position: center;
   background-repeat: no-repeat;
-  width: 100%;
-  -webkit-background-size: contain;
-          background-size: contain;
+  -webkit-background-size: cover;
+          background-size: cover;
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
@@ -687,15 +692,6 @@ select:focus {
           box-shadow: 0 0 0 2px rgba(255, 43, 193, 0.3333333333);
 }
 
-:root {
-  --about-bg: #0e0e10;
-  --about-card-bg: #18181b;
-  --about-accent: #ff3ca6;
-  --about-muted: #9aa0a6;
-  --about-radius: 14px;
-  --slide-gap: 20px;
-}
-
 .about-us {
   color: #fff;
   padding: 40px 20px;
@@ -715,7 +711,7 @@ select:focus {
 }
 
 .about-us__subtitle {
-  color: var(--about-muted);
+  color: #9aa0a6;
   margin-bottom: 32px;
   font-size: 0.95rem;
 }
@@ -731,24 +727,22 @@ select:focus {
   display: -webkit-flex;
   display: -moz-box;
   display: flex;
-  gap: var(--slide-gap);
+  gap: 20px;
   -webkit-transition: -webkit-transform 0.4s ease;
   transition: -webkit-transform 0.4s ease;
   -moz-transition: transform 0.4s ease, -moz-transform 0.4s ease;
   transition: transform 0.4s ease;
   transition: transform 0.4s ease, -webkit-transform 0.4s ease, -moz-transform 0.4s ease;
-  will-change: transform;
-  padding: 15px 20px;
+  padding: 15px 15px;
 }
 
 .about-us__slide {
-  background: var(--about-card-bg);
-  border-radius: var(--about-radius);
+  position: relative;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 100%;
      -moz-box-flex: 0;
           flex: 0 0 100%;
-  max-width: 100%;
+  width: 206px;
   padding: 20px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -758,6 +752,22 @@ select:focus {
   -moz-transition: transform 0.3s ease, box-shadow 0.3s ease, -moz-transform 0.3s ease;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease, -moz-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.about-us__slide::after {
+  content: "";
+  width: 78%;
+  height: 46%;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 99;
+  border: 1px solid rgba(220, 86, 197, 0.3019607843);
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
 .about-us__slide:hover {
@@ -770,9 +780,11 @@ select:focus {
 }
 
 .about-us__image {
-  width: 100%;
-  border-radius: var(--about-radius);
+  width: 500px;
+  height: 300px;
   margin-bottom: 12px;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
 .about-us__name {
@@ -781,26 +793,37 @@ select:focus {
 }
 
 .about-us__role {
-  color: var(--about-muted);
+  color: #9aa0a6;
   font-size: 0.9rem;
 }
 
 /* Стрілки */
 .about-us__arrow {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
      -moz-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
-  background: var(--about-accent);
   border: none;
   color: #fff;
-  font-size: 2rem;
+  font-size: 150px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
   opacity: 0.7;
   -webkit-transition: opacity 0.2s;
   -moz-transition: opacity 0.2s;
@@ -820,9 +843,10 @@ select:focus {
   right: 10px;
 }
 
-/* --- Адаптив --- */
-/* Планшет (від 768px): показуємо 2 картки */
-/* ПК (від 1200px): показуємо 3 картки */
+/* 🔹 Адаптив: мобайл → планшет → ПК */
+/* Телефон до 480px */
+/* Планшет від 768px */
+/* ПК від 1200px */
 @media (min-width: 1024){
   body {
     background-image: url("/Event_Booster/assets/bg-laptop.png");
@@ -833,15 +857,12 @@ select:focus {
     background-image: url("/Event_Booster/assets/bg-tablet.png");
   }
 }
-@media (min-width: 768px){
+@media (min-width: 768px) and (max-width: 1199px){
   .about-us__slide {
     -webkit-box-flex: 0;
-    -webkit-flex: 0 0 -webkit-calc(50% - var(--slide-gap) / 2);
+    -webkit-flex: 0 0 -webkit-calc(50% - 10px);
        -moz-box-flex: 0;
-            flex: 0 0 calc(50% - var(--slide-gap) / 2);
-    max-width: -webkit-calc(50% - var(--slide-gap) / 2);
-    max-width: -moz-calc(50% - var(--slide-gap) / 2);
-    max-width: calc(50% - var(--slide-gap) / 2);
+            flex: 0 0 calc(50% - 10px);
   }
 }
 @media screen and (min-width: 768px){
@@ -871,12 +892,9 @@ select:focus {
 @media (min-width: 1200px){
   .about-us__slide {
     -webkit-box-flex: 0;
-    -webkit-flex: 0 0 -webkit-calc(33.333% - var(--slide-gap) / 1.5);
+    -webkit-flex: 0 0 -webkit-calc(33.333% - 13.3333333333px);
        -moz-box-flex: 0;
-            flex: 0 0 calc(33.333% - var(--slide-gap) / 1.5);
-    max-width: -webkit-calc(33.333% - var(--slide-gap) / 1.5);
-    max-width: -moz-calc(33.333% - var(--slide-gap) / 1.5);
-    max-width: calc(33.333% - var(--slide-gap) / 1.5);
+            flex: 0 0 calc(33.333% - 13.3333333333px);
   }
 }
 @media screen and (min-width: 1200px){
@@ -911,5 +929,11 @@ select:focus {
   }
   .modal-right {
     width: 100%;
+  }
+  .about-us__slide {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+       -moz-box-flex: 0;
+            flex: 0 0 100%;
   }
 }
