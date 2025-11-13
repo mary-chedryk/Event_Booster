@@ -11,6 +11,8 @@ const modalLink = document.getElementById("modalLink");
 const modalLink2 = document.getElementById("modalLink2");
 const authorBtn = document.querySelector(".author-btn");
 
+let scrollY = 0;
+
 document.addEventListener("click", (e) => {
   const card = e.target.closest(".event-card");
   if (!card) return;
@@ -33,13 +35,39 @@ document.addEventListener("click", (e) => {
   modalLink2.href = link;
 
   modal.style.display = "flex";
+
+
+  scrollY = window.scrollY;
+
+
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${scrollY}px`;
+  document.body.style.left = "0";
+  document.body.style.right = "0";
 });
 
-closeBtn.addEventListener("click", () => (modal.style.display = "none"));
+const closeModal = () => {
+  modal.style.display = "none";
+
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
+
+  window.scrollTo(0, scrollY);
+};
+
+closeBtn.addEventListener("click", closeModal);
+
 window.addEventListener("click", (e) => {
-  if (e.target === modal) modal.style.display = "none";
+  if (e.target === modal) closeModal();
 });
 
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modal.style.display === "flex") {
+    closeModal();
+  }
+});
 
 authorBtn.addEventListener("click", () => {
   window.open("https://www.nba.com/suns/", "_blank");

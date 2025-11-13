@@ -6,37 +6,48 @@ const countrySelect = document.getElementById('country');
 const searchBtn = document.getElementById('search-btn');
 
 let currentPage = 0;
+let totalPages = 1;
+let currentKeyword = '';
+let currentCountry = '';
 
-async function fetchEvents(page = 0) {
+async function fetchEvents(page = 0, append = false) {
   const keyword = keywordInput.value.trim();
   const country = countrySelect.value;
 
+  // Save filters so "Load more" uses same query
+  if (page === 0) {
+    currentKeyword = keyword;
+    currentCountry = country;
+  }
+
   const url = new URL('https://app.ticketmaster.com/discovery/v2/events.json');
   url.searchParams.set('apikey', apiKey);
-  if (keyword) url.searchParams.set('keyword', keyword);
-  if (country) url.searchParams.set('countryCode', country);
+  if (currentKeyword) url.searchParams.set('keyword', currentKeyword);
+  if (currentCountry) url.searchParams.set('countryCode', currentCountry);
   url.searchParams.set('size', 12);
   url.searchParams.set('page', page);
 
-  grid.innerHTML = '<p>Loading...</p>';
+  if (!append) grid.innerHTML = '<p>Loading...</p>';
+  else pagination.innerHTML = '<p>Loading more...</p>';
 
   try {
     const res = await fetch(url);
     const data = await res.json();
 
     const events = data._embedded?.events || [];
-    renderEvents(events);
+    totalPages = data.page?.totalPages || 1;
+    currentPage = data.page?.number || 0;
 
-    const pageInfo = data.page || {};
-    renderPagination(pageInfo.totalPages || 1, pageInfo.number || 0);
+    renderEvents(events, append);
+    renderLoadMore();
   } catch (error) {
     console.error(error);
     grid.innerHTML = `<p style="color:red">Error loading events. Check console for details.</p>`;
   }
 }
 
-function renderEvents(events) {
-  if (!events.length) {
+function renderEvents(events, append = false) {
+  if (!events.length && !append) {
     grid.innerHTML = '<p>No events found.</p>';
     return;
   }

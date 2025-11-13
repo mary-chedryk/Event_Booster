@@ -1,10 +1,10 @@
 .modal {
-  display: none; 
+  display: none;
   justify-content: center;
   align-items: center;
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
 
@@ -23,7 +23,6 @@
   max-height: 90vh;
 }
 
-
 .close {
   align-self: flex-end;
   font-size: 28px;
@@ -34,7 +33,6 @@
 .close:hover {
   color: #e6007e;
 }
-
 
 .modal-body {
   display: flex;
@@ -48,7 +46,6 @@
   border-radius: 25px;
   object-fit: cover;
 }
-
 
 .modal-right {
   flex: 1;
@@ -70,7 +67,6 @@
   border-radius: 50%;
 }
 
-
 .section-title {
   color: #e6007e;
   font-weight: bold;
@@ -81,7 +77,6 @@
 .modal-info {
   font-size: 15px;
 }
-
 
 .buy-btn {
   display: inline-block;
@@ -116,7 +111,6 @@
   color: white;
 }
 
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -125,5 +119,26 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+@media (max-width: 480px) {
+  .modal-left {
+    display: none;
+  }
+
+  .modal-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal-right {
+    width: 100%;
   }
 }
