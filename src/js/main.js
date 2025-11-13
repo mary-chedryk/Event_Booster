@@ -49,7 +49,7 @@ function renderEvents(events) {
       <h3>${e.name}</h3>
       <p class="p-date">${e.dates?.start?.localDate || 'No date'}</p>
       <p class="p-adress">📍 ${e._embedded?.venues?.[0]?.name || ''}</p>
-      <a href="${e.url}" target="_blank">More info</a>
+      <a class="load-more-btn" href="${e.url}" target="_blank">More info</a>
     </div>
   `
     )
