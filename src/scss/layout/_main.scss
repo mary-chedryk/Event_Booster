@@ -1,92 +1,130 @@
 .search-controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto;
 }
 
 .search-controls input,
 .search-controls select,
 .search-controls button {
-    padding: 0.6rem 1rem;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    font-size: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+#keyword{
+border-radius: 20px;
+
+background: #FFFFFF33;
+backdrop-filter: blur(20px); 
+  -webkit-backdrop-filter: blur(20px); 
+  border: none;
+  border-radius: 40px;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  outline: none;
+
 }
 
 .search-controls input {
-    width: 260px;
+  width: 260px;
 }
 
 .search-controls select {
-    width: 180px;
+  width: 180px;
 }
 
 .search-controls button {
-    background: #DC56C5;
-    color: white;
-    cursor: pointer;
+  background: #dc56c5;
+  color: white;
+  cursor: pointer;
 }
 
 .events-grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    padding: 1rem 2rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  padding: 1rem 2rem;
 }
 
 .event-card {
-    background: #1b1b1b;
-    border-radius: 16px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: transform .2s;
+  background: #1b1b1b;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
 }
 
 .event-card:hover {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 .event-card img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
 .event-card h3 {
-    font-weight: 700;
-    font-size: 16px;
-    text-align: center;
-    color: #DC56C5;
-    margin: 0.8rem 0 0.4rem;
+//   font-weight: 700;
+//   font-size: 16px;
+//   text-align: center;
+//   color: #DC56C5;
+//   margin: 0.8rem 0 0.4rem;
+//   font-family: Montserrat;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #dc56c5;
 }
 
-.event-card p {
-    font-weight: 400;
-    font-size: 16px;
-    text-align: center;
+.p-date {
+  text-align: center;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #FFFFFF;
+}
 
+.p-adress{
+font-family: Montserrat;
+font-weight: 600;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
 }
 
 .pagination {
-    font-weight: 600;
-    font-size: 14px;
-    text-align: center;
-    margin: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  margin: 20px;
 }
 
 .pagination button {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.1rem;
-    margin: 0 0.3rem;
-    cursor: pointer;
-    transition: color 0.2s;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  margin: 0 0.3rem;
+  cursor: pointer;
+  transition: color 0.2s;
 }
 
 .pagination button.active {
-    color: #b43fe0;
+  color: #b43fe0;
 }

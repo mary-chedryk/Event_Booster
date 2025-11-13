@@ -47,8 +47,8 @@ function renderEvents(events) {
     <div class="event-card">
       <img src="${e.images?.[0]?.url}" alt="${e.name}">
       <h3>${e.name}</h3>
-      <p>${e.dates?.start?.localDate || 'No date'}</p>
-      <p>📍 ${e._embedded?.venues?.[0]?.name || ''}</p>
+      <p class="p-date">${e.dates?.start?.localDate || 'No date'}</p>
+      <p class="p-adress">📍 ${e._embedded?.venues?.[0]?.name || ''}</p>
       <a href="${e.url}" target="_blank">More info</a>
     </div>
   `
